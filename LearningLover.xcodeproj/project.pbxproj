@@ -12,19 +12,12 @@
 		534E54AD2B3EC57E0052AF72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 534E54AC2B3EC57E0052AF72 /* Assets.xcassets */; };
 		534E54B02B3EC57E0052AF72 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 534E54AF2B3EC57E0052AF72 /* Preview Assets.xcassets */; };
 		534E54BA2B3EC57E0052AF72 /* LearningLoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534E54B92B3EC57E0052AF72 /* LearningLoverTests.swift */; };
-		534E54C42B3EC57E0052AF72 /* LearningLoverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534E54C32B3EC57E0052AF72 /* LearningLoverUITests.swift */; };
-		534E54C62B3EC57E0052AF72 /* LearningLoverUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534E54C52B3EC57E0052AF72 /* LearningLoverUITestsLaunchTests.swift */; };
+		534E54D52B3ECB6C0052AF72 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 534E54D42B3ECB6C0052AF72 /* ViewInspector */; };
+		534E54D82B3ECF670052AF72 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 534E54D72B3ECF670052AF72 /* ViewInspector */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		534E54B62B3EC57E0052AF72 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 534E549D2B3EC57C0052AF72 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 534E54A42B3EC57C0052AF72;
-			remoteInfo = LearningLover;
-		};
-		534E54C02B3EC57E0052AF72 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 534E549D2B3EC57C0052AF72 /* Project object */;
 			proxyType = 1;
@@ -41,9 +34,7 @@
 		534E54AF2B3EC57E0052AF72 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		534E54B52B3EC57E0052AF72 /* LearningLoverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearningLoverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		534E54B92B3EC57E0052AF72 /* LearningLoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningLoverTests.swift; sourceTree = "<group>"; };
-		534E54BF2B3EC57E0052AF72 /* LearningLoverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearningLoverUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		534E54C32B3EC57E0052AF72 /* LearningLoverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningLoverUITests.swift; sourceTree = "<group>"; };
-		534E54C52B3EC57E0052AF72 /* LearningLoverUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningLoverUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		534E54D22B3EC59A0052AF72 /* LearningLover.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = LearningLover.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				534E54D52B3ECB6C0052AF72 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,13 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		534E54BC2B3EC57E0052AF72 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				534E54D82B3ECF670052AF72 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,10 +60,11 @@
 		534E549C2B3EC57C0052AF72 = {
 			isa = PBXGroup;
 			children = (
+				534E54D22B3EC59A0052AF72 /* LearningLover.xctestplan */,
 				534E54A72B3EC57C0052AF72 /* LearningLover */,
 				534E54B82B3EC57E0052AF72 /* LearningLoverTests */,
-				534E54C22B3EC57E0052AF72 /* LearningLoverUITests */,
 				534E54A62B3EC57C0052AF72 /* Products */,
+				534E54D62B3ECF670052AF72 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,7 +73,6 @@
 			children = (
 				534E54A52B3EC57C0052AF72 /* LearningLover.app */,
 				534E54B52B3EC57E0052AF72 /* LearningLoverTests.xctest */,
-				534E54BF2B3EC57E0052AF72 /* LearningLoverUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,13 +104,11 @@
 			path = LearningLoverTests;
 			sourceTree = "<group>";
 		};
-		534E54C22B3EC57E0052AF72 /* LearningLoverUITests */ = {
+		534E54D62B3ECF670052AF72 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				534E54C32B3EC57E0052AF72 /* LearningLoverUITests.swift */,
-				534E54C52B3EC57E0052AF72 /* LearningLoverUITestsLaunchTests.swift */,
 			);
-			path = LearningLoverUITests;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +127,9 @@
 			dependencies = (
 			);
 			name = LearningLover;
+			packageProductDependencies = (
+				534E54D42B3ECB6C0052AF72 /* ViewInspector */,
+			);
 			productName = LearningLover;
 			productReference = 534E54A52B3EC57C0052AF72 /* LearningLover.app */;
 			productType = "com.apple.product-type.application";
@@ -161,27 +148,12 @@
 				534E54B72B3EC57E0052AF72 /* PBXTargetDependency */,
 			);
 			name = LearningLoverTests;
+			packageProductDependencies = (
+				534E54D72B3ECF670052AF72 /* ViewInspector */,
+			);
 			productName = LearningLoverTests;
 			productReference = 534E54B52B3EC57E0052AF72 /* LearningLoverTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		534E54BE2B3EC57E0052AF72 /* LearningLoverUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 534E54CF2B3EC57E0052AF72 /* Build configuration list for PBXNativeTarget "LearningLoverUITests" */;
-			buildPhases = (
-				534E54BB2B3EC57E0052AF72 /* Sources */,
-				534E54BC2B3EC57E0052AF72 /* Frameworks */,
-				534E54BD2B3EC57E0052AF72 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				534E54C12B3EC57E0052AF72 /* PBXTargetDependency */,
-			);
-			name = LearningLoverUITests;
-			productName = LearningLoverUITests;
-			productReference = 534E54BF2B3EC57E0052AF72 /* LearningLoverUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -200,10 +172,6 @@
 						CreatedOnToolsVersion = 15.0.1;
 						TestTargetID = 534E54A42B3EC57C0052AF72;
 					};
-					534E54BE2B3EC57E0052AF72 = {
-						CreatedOnToolsVersion = 15.0.1;
-						TestTargetID = 534E54A42B3EC57C0052AF72;
-					};
 				};
 			};
 			buildConfigurationList = 534E54A02B3EC57C0052AF72 /* Build configuration list for PBXProject "LearningLover" */;
@@ -215,13 +183,15 @@
 				Base,
 			);
 			mainGroup = 534E549C2B3EC57C0052AF72;
+			packageReferences = (
+				534E54D32B3ECB6C0052AF72 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+			);
 			productRefGroup = 534E54A62B3EC57C0052AF72 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				534E54A42B3EC57C0052AF72 /* LearningLover */,
 				534E54B42B3EC57E0052AF72 /* LearningLoverTests */,
-				534E54BE2B3EC57E0052AF72 /* LearningLoverUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -237,13 +207,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		534E54B32B3EC57E0052AF72 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		534E54BD2B3EC57E0052AF72 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -270,15 +233,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		534E54BB2B3EC57E0052AF72 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				534E54C42B3EC57E0052AF72 /* LearningLoverUITests.swift in Sources */,
-				534E54C62B3EC57E0052AF72 /* LearningLoverUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -286,11 +240,6 @@
 			isa = PBXTargetDependency;
 			target = 534E54A42B3EC57C0052AF72 /* LearningLover */;
 			targetProxy = 534E54B62B3EC57E0052AF72 /* PBXContainerItemProxy */;
-		};
-		534E54C12B3EC57E0052AF72 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 534E54A42B3EC57C0052AF72 /* LearningLover */;
-			targetProxy = 534E54C02B3EC57E0052AF72 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -508,40 +457,6 @@
 			};
 			name = Release;
 		};
-		534E54D02B3EC57E0052AF72 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sinhlh.LearningLoverUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LearningLover;
-			};
-			name = Debug;
-		};
-		534E54D12B3EC57E0052AF72 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sinhlh.LearningLoverUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LearningLover;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -572,16 +487,31 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		534E54CF2B3EC57E0052AF72 /* Build configuration list for PBXNativeTarget "LearningLoverUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				534E54D02B3EC57E0052AF72 /* Debug */,
-				534E54D12B3EC57E0052AF72 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		534E54D32B3ECB6C0052AF72 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				kind = exactVersion;
+				version = 0.9.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		534E54D42B3ECB6C0052AF72 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 534E54D32B3ECB6C0052AF72 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+		534E54D72B3ECF670052AF72 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 534E54D32B3ECB6C0052AF72 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 534E549D2B3EC57C0052AF72 /* Project object */;
 }

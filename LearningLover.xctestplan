@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "DBD29C6B-E7CB-4DE5-9950-A4A6B513E7AB",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:LearningLover.xcodeproj",
+      "identifier" : "534E54A42B3EC57C0052AF72",
+      "name" : "LearningLover"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:LearningLover.xcodeproj",
+        "identifier" : "534E54B42B3EC57E0052AF72",
+        "name" : "LearningLoverTests"
+      }
+    }
+  ],
+  "version" : 1
+}
