@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		534E54A92B3EC57C0052AF72 /* LearningLoverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534E54A82B3EC57C0052AF72 /* LearningLoverApp.swift */; };
-		534E54AB2B3EC57C0052AF72 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534E54AA2B3EC57C0052AF72 /* ContentView.swift */; };
 		534E54AD2B3EC57E0052AF72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 534E54AC2B3EC57E0052AF72 /* Assets.xcassets */; };
 		534E54B02B3EC57E0052AF72 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 534E54AF2B3EC57E0052AF72 /* Preview Assets.xcassets */; };
-		534E54BA2B3EC57E0052AF72 /* LearningLoverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534E54B92B3EC57E0052AF72 /* LearningLoverTests.swift */; };
 		534E54D52B3ECB6C0052AF72 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 534E54D42B3ECB6C0052AF72 /* ViewInspector */; };
 		534E54D82B3ECF670052AF72 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 534E54D72B3ECF670052AF72 /* ViewInspector */; };
 /* End PBXBuildFile section */
@@ -29,11 +27,9 @@
 /* Begin PBXFileReference section */
 		534E54A52B3EC57C0052AF72 /* LearningLover.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningLover.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		534E54A82B3EC57C0052AF72 /* LearningLoverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningLoverApp.swift; sourceTree = "<group>"; };
-		534E54AA2B3EC57C0052AF72 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		534E54AC2B3EC57E0052AF72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		534E54AF2B3EC57E0052AF72 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		534E54B52B3EC57E0052AF72 /* LearningLoverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearningLoverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		534E54B92B3EC57E0052AF72 /* LearningLoverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningLoverTests.swift; sourceTree = "<group>"; };
 		534E54D22B3EC59A0052AF72 /* LearningLover.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = LearningLover.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				534E54A82B3EC57C0052AF72 /* LearningLoverApp.swift */,
-				534E54AA2B3EC57C0052AF72 /* ContentView.swift */,
 				534E54AC2B3EC57E0052AF72 /* Assets.xcassets */,
 				534E54AE2B3EC57E0052AF72 /* Preview Content */,
 			);
@@ -99,7 +94,6 @@
 		534E54B82B3EC57E0052AF72 /* LearningLoverTests */ = {
 			isa = PBXGroup;
 			children = (
-				534E54B92B3EC57E0052AF72 /* LearningLoverTests.swift */,
 			);
 			path = LearningLoverTests;
 			sourceTree = "<group>";
@@ -220,7 +214,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				534E54AB2B3EC57C0052AF72 /* ContentView.swift in Sources */,
 				534E54A92B3EC57C0052AF72 /* LearningLoverApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +222,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				534E54BA2B3EC57E0052AF72 /* LearningLoverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
