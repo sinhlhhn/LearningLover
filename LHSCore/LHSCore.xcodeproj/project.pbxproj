@@ -12,6 +12,7 @@
 		53CE6EE72B450E560037C78F /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CE6EE62B450E560037C78F /* CategoryItem.swift */; };
 		53CE6EE92B450F040037C78F /* CategoryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CE6EE82B450F040037C78F /* CategoryLoader.swift */; };
 		53CE6EEF2B4514880037C78F /* RemoteCategoryLoaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CE6EEE2B4514880037C78F /* RemoteCategoryLoaderTest.swift */; };
+		53CE6EF22B4536710037C78F /* RemoteCategoryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CE6EF12B4536710037C78F /* RemoteCategoryLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		53CE6EE62B450E560037C78F /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		53CE6EE82B450F040037C78F /* CategoryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryLoader.swift; sourceTree = "<group>"; };
 		53CE6EEE2B4514880037C78F /* RemoteCategoryLoaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCategoryLoaderTest.swift; sourceTree = "<group>"; };
+		53CE6EF12B4536710037C78F /* RemoteCategoryLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCategoryLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +75,9 @@
 		53CE6ED02B43EB030037C78F /* LHSCore */ = {
 			isa = PBXGroup;
 			children = (
-				53CE6ED12B43EB030037C78F /* LHSCore.h */,
+				53CE6EF02B45364B0037C78F /* Category API */,
 				53CE6EEA2B4512110037C78F /* Category Feature */,
+				53CE6ED12B43EB030037C78F /* LHSCore.h */,
 			);
 			path = LHSCore;
 			sourceTree = "<group>";
@@ -94,6 +97,14 @@
 				53CE6EE62B450E560037C78F /* CategoryItem.swift */,
 			);
 			path = "Category Feature";
+			sourceTree = "<group>";
+		};
+		53CE6EF02B45364B0037C78F /* Category API */ = {
+			isa = PBXGroup;
+			children = (
+				53CE6EF12B4536710037C78F /* RemoteCategoryLoader.swift */,
+			);
+			path = "Category API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53CE6EF22B4536710037C78F /* RemoteCategoryLoader.swift in Sources */,
 				53CE6EE92B450F040037C78F /* CategoryLoader.swift in Sources */,
 				53CE6EE72B450E560037C78F /* CategoryItem.swift in Sources */,
 			);
