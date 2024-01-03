@@ -4,14 +4,16 @@ import XCTest
 import Combine
 
 class RemoteCategoryLoader {
+    let url: URL
     let client: HTTPClient
     
-    init(client: HTTPClient) {
+    init(url: URL, client: HTTPClient) {
+        self.url = url
         self.client = client
     }
     
     func load() {
-        client.get(from: URL(string: "http://a-url.com")!)
+        client.get(from: url)
     }
 }
 
@@ -30,19 +32,21 @@ class HTTPCLientSpy: HTTPClient {
 final class RemoteCategoryLoaderTest: XCTestCase {
 
     func test_init_doesNotRequestDataFromURL() {
+        let url = URL(string: "http://a-given-url")!
         let client = HTTPCLientSpy()
-        _ = RemoteCategoryLoader(client: client)
+        _ = RemoteCategoryLoader(url: url, client: client)
         
         XCTAssertNil(client.requestedURL)
     }
     
     func test_load_requestDataFromURL() {
+        let url = URL(string: "http://a-given-url")!
         let client = HTTPCLientSpy()
-        let sut = RemoteCategoryLoader(client: client)
+        let sut = RemoteCategoryLoader(url: url, client: client)
         
         sut.load()
         
-        XCTAssertNotNil(client.requestedURL)
+        XCTAssertEqual(client.requestedURL, url)
     }
 
 }
