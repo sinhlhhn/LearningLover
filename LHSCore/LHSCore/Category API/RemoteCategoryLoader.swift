@@ -16,7 +16,13 @@ public final class RemoteCategoryLoader {
         self.client = client
     }
     
+    public enum Error: Swift.Error {
+        case connectivity
+    }
+    
     public func load() -> AnyPublisher<Void, Error> {
         return client.get(from: url)
+            .mapError { _ in Error.connectivity }
+            .eraseToAnyPublisher()
     }
 }

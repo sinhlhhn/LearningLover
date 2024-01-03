@@ -33,24 +33,10 @@ final class RemoteCategoryLoaderTest: XCTestCase {
     
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
-        var cancellables = [AnyCancellable]()
-        var errorCallCount = 0
         
-        let expectation = expectation(description: "wait for loading")
-        sut.load()
-            .sink { completion in
-                errorCallCount += 1
-                expectation.fulfill()
-            } receiveValue: { value in
-                XCTFail("Expect failed, got \(value) instead")
-            }
-            .store(in: &cancellables)
-
-        client.onCompleteFailure()
-        
-        wait(for: [expectation], timeout: 1)
-        
-        XCTAssertEqual(errorCallCount, 1)
+        expect(sut, expectedCompletion: .failure(.connectivity)) {
+            client.onCompleteFailure()
+        }
     }
 
     //MARK: - Helpers:
@@ -63,6 +49,32 @@ final class RemoteCategoryLoaderTest: XCTestCase {
         let sut = RemoteCategoryLoader(url: url, client: client)
         
         return (sut, client)
+    }
+    
+    private func expect(_ sut: RemoteCategoryLoader, expectedCompletion: Subscribers.Completion<RemoteCategoryLoader.Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        var cancellables = [AnyCancellable]()
+        
+        var completion: Subscribers.Completion<RemoteCategoryLoader.Error>?
+        
+        let expectation = expectation(description: "wait for loading")
+        sut.load()
+            .sink {
+                completion = $0
+                expectation.fulfill()
+            } receiveValue: { value in
+                XCTFail("Expect failed, got \(value) instead")
+            }
+            .store(in: &cancellables)
+
+        action()
+        
+        wait(for: [expectation], timeout: 1)
+        
+        XCTAssertEqual(completion, expectedCompletion, file: file, line: line)
+    }
+    
+    private func anyError() -> Error {
+        NSError(domain: "e", code: -1)
     }
     
     private class HTTPClientSpy: HTTPClient {
