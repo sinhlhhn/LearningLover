@@ -1,6 +1,7 @@
 //
 
 import XCTest
+import Combine
 import LHSCore
 
 final class RemoteCategoryLoaderTest: XCTestCase {
@@ -29,11 +30,37 @@ final class RemoteCategoryLoaderTest: XCTestCase {
         
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
+    
+    func test_load_deliversErrorOnClientError() {
+        let (sut, client) = makeSUT()
+        var cancellables = [AnyCancellable]()
+        var errorCallCount = 0
+        
+        let expectation = expectation(description: "wait for loading")
+        sut.load()
+            .sink { completion in
+                errorCallCount += 1
+                expectation.fulfill()
+            } receiveValue: { value in
+                XCTFail("Expect failed, got \(value) instead")
+            }
+            .store(in: &cancellables)
+
+        client.onCompleteFailure()
+        
+        wait(for: [expectation], timeout: 1)
+        
+        XCTAssertEqual(errorCallCount, 1)
+    }
 
     //MARK: - Helpers:
     
-    private func makeSUT(url: URL = URL(string: "http://a-default-url")!) -> (RemoteCategoryLoader, HTTPCLientSpy) {
-        let client = HTTPCLientSpy()
+    private func makeSUT(
+        url: URL = URL(string: "http://a-default-url")!,
+        client: HTTPCLientSpy = HTTPCLientSpy(state: PassthroughSubject<Void, Error>()))
+    -> (RemoteCategoryLoader, HTTPCLientSpy) {
+        
+        let client = client
         let sut = RemoteCategoryLoader(url: url, client: client)
         
         return (sut, client)
@@ -41,9 +68,19 @@ final class RemoteCategoryLoaderTest: XCTestCase {
     
     private class HTTPCLientSpy: HTTPClient {
         var requestedURLs: [URL] = []
+        let state: PassthroughSubject<Void, Error>
         
-        func get(from url: URL) {
+        init(state: PassthroughSubject<Void, Error>) {
+            self.state = state
+        }
+        
+        func get(from url: URL) -> AnyPublisher<Void, Error> {
             requestedURLs .append(url)
+            return state.eraseToAnyPublisher()
+        }
+        
+        func onCompleteFailure(with error: Error = NSError(domain: "e", code: -1)) {
+            state.send(completion: .failure(error))
         }
     }
 }

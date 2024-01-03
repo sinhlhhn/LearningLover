@@ -1,9 +1,10 @@
 //
 
 import Foundation
+import Combine
 
 public protocol HTTPClient {
-    func get(from url: URL)
+    func get(from url: URL) -> AnyPublisher<Void, Error>
 }
 
 public final class RemoteCategoryLoader {
@@ -15,7 +16,7 @@ public final class RemoteCategoryLoader {
         self.client = client
     }
     
-    public func load() {
-        client.get(from: url)
+    public func load() -> AnyPublisher<Void, Error> {
+        return client.get(from: url)
     }
 }
