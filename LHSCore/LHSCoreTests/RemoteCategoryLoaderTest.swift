@@ -57,8 +57,8 @@ final class RemoteCategoryLoaderTest: XCTestCase {
     
     private func makeSUT(
         url: URL = URL(string: "http://a-default-url")!,
-        client: HTTPCLientSpy = HTTPCLientSpy(state: PassthroughSubject<Void, Error>()))
-    -> (RemoteCategoryLoader, HTTPCLientSpy) {
+        client: HTTPClientSpy = HTTPClientSpy(state: PassthroughSubject<Void, Error>()))
+    -> (RemoteCategoryLoader, HTTPClientSpy) {
         
         let client = client
         let sut = RemoteCategoryLoader(url: url, client: client)
@@ -66,7 +66,7 @@ final class RemoteCategoryLoaderTest: XCTestCase {
         return (sut, client)
     }
     
-    private class HTTPCLientSpy: HTTPClient {
+    private class HTTPClientSpy: HTTPClient {
         var requestedURLs: [URL] = []
         let state: PassthroughSubject<Void, Error>
         
