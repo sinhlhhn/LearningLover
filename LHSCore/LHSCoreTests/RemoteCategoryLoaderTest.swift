@@ -38,6 +38,14 @@ final class RemoteCategoryLoaderTest: XCTestCase {
             client.onCompleteFailure()
         }
     }
+    
+    func test_load_deliverErrorOnNon200HTTPResponse() {
+        let (sut, client) = makeSUT()
+        
+        expect(sut, expectedCompletion: .failure(.invalidData)) {
+            client.onComplete(statusCode: 300)
+        }
+    }
 
     //MARK: - Helpers:
     
@@ -62,7 +70,8 @@ final class RemoteCategoryLoaderTest: XCTestCase {
                 completion = $0
                 expectation.fulfill()
             } receiveValue: { value in
-                XCTFail("Expect failed, got \(value) instead")
+                XCTFail("Expect failed, got \(value) instead", file: file, line: line)
+                expectation.fulfill()
             }
             .store(in: &cancellables)
 
@@ -73,15 +82,11 @@ final class RemoteCategoryLoaderTest: XCTestCase {
         XCTAssertEqual(completion, expectedCompletion, file: file, line: line)
     }
     
-    private func anyError() -> Error {
-        NSError(domain: "e", code: -1)
-    }
-    
     private class HTTPClientSpy: HTTPClient {
         var requestedURLs: [URL] = []
-        let state = PassthroughSubject<Void, Error>()
+        let state = PassthroughSubject<HTTPURLResponse, Error>()
         
-        func get(from url: URL) -> AnyPublisher<Void, Error> {
+        func get(from url: URL) -> AnyPublisher<HTTPURLResponse, Error> {
             requestedURLs .append(url)
             return state.eraseToAnyPublisher()
         }
@@ -89,5 +94,19 @@ final class RemoteCategoryLoaderTest: XCTestCase {
         func onCompleteFailure(with error: Error = NSError(domain: "e", code: -1)) {
             state.send(completion: .failure(error))
         }
+        
+        func onComplete(statusCode: Int, index: Int = 0) {
+            let response = HTTPURLResponse(
+                url: requestedURLs[index],
+                statusCode: statusCode,
+                httpVersion: nil,
+                headerFields: nil
+            )!
+            state.send(response)
+        }
     }
+}
+
+private func anyError() -> Error {
+    NSError(domain: "e", code: -1)
 }
