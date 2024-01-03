@@ -56,11 +56,10 @@ final class RemoteCategoryLoaderTest: XCTestCase {
     //MARK: - Helpers:
     
     private func makeSUT(
-        url: URL = URL(string: "http://a-default-url")!,
-        client: HTTPClientSpy = HTTPClientSpy(state: PassthroughSubject<Void, Error>()))
+        url: URL = URL(string: "http://a-default-url")!)
     -> (RemoteCategoryLoader, HTTPClientSpy) {
         
-        let client = client
+        let client = HTTPClientSpy()
         let sut = RemoteCategoryLoader(url: url, client: client)
         
         return (sut, client)
@@ -68,11 +67,7 @@ final class RemoteCategoryLoaderTest: XCTestCase {
     
     private class HTTPClientSpy: HTTPClient {
         var requestedURLs: [URL] = []
-        let state: PassthroughSubject<Void, Error>
-        
-        init(state: PassthroughSubject<Void, Error>) {
-            self.state = state
-        }
+        let state = PassthroughSubject<Void, Error>()
         
         func get(from url: URL) -> AnyPublisher<Void, Error> {
             requestedURLs .append(url)
