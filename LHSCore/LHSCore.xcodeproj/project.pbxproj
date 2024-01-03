@@ -10,6 +10,7 @@
 		53CE6ED72B43EB030037C78F /* LHSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53CE6ECE2B43EB030037C78F /* LHSCore.framework */; };
 		53CE6EDC2B43EB030037C78F /* LHSCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CE6EDB2B43EB030037C78F /* LHSCoreTests.swift */; };
 		53CE6EDD2B43EB030037C78F /* LHSCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 53CE6ED12B43EB030037C78F /* LHSCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		53CE6EE72B450E560037C78F /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CE6EE62B450E560037C78F /* CategoryItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 		53CE6ED12B43EB030037C78F /* LHSCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHSCore.h; sourceTree = "<group>"; };
 		53CE6ED62B43EB030037C78F /* LHSCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LHSCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53CE6EDB2B43EB030037C78F /* LHSCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LHSCoreTests.swift; sourceTree = "<group>"; };
+		53CE6EE62B450E560037C78F /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				53CE6ED12B43EB030037C78F /* LHSCore.h */,
+				53CE6EE62B450E560037C78F /* CategoryItem.swift */,
 			);
 			path = LHSCore;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				TargetAttributes = {
 					53CE6ECD2B43EB030037C78F = {
 						CreatedOnToolsVersion = 15.0.1;
+						LastSwiftMigration = 1500;
 					};
 					53CE6ED52B43EB030037C78F = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -191,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53CE6EE72B450E560037C78F /* CategoryItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +341,7 @@
 		53CE6EE12B43EB030037C78F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -365,6 +371,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -373,6 +380,7 @@
 		53CE6EE22B43EB030037C78F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -410,6 +418,7 @@
 		53CE6EE42B43EB030037C78F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -429,6 +438,7 @@
 		53CE6EE52B43EB030037C78F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
