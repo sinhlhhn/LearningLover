@@ -16,7 +16,7 @@ final class RemoteCategoryLoaderTest: XCTestCase {
         let url = URL(string: "http://a-given-url")!
         let (sut, client) = makeSUT(url: url)
         
-        sut.load()
+        _ = sut.load()
         
         XCTAssertEqual(client.requestedURLs, [url])
     }
@@ -25,8 +25,8 @@ final class RemoteCategoryLoaderTest: XCTestCase {
         let url = URL(string: "http://a-given-url")!
         let (sut, client) = makeSUT(url: url)
         
-        sut.load()
-        sut.load()
+        _ = sut.load()
+        _ = sut.load()
         
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
