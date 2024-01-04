@@ -21,12 +21,13 @@ public final class RemoteCategoryLoader {
         case invalidData
     }
     
-    public func load() -> AnyPublisher<Void, Error> {
+    public func load() -> AnyPublisher<[CategoryItem], Error> {
         return client.get(from: url)
             .tryMap { data, response in
                 guard response.statusCode == 200, !data.isEmpty else {
                     throw Error.invalidData
                 }
+                return []
             }
             .mapError { $0 as? Error ?? Error.connectivity}
             .eraseToAnyPublisher()
