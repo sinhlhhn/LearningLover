@@ -64,6 +64,29 @@ final class RemoteCategoryLoaderTest: XCTestCase {
             client.onComplete(statusCode: 200, data: emptyJSON)
         }
     }
+    
+    func test_load_deliversItemsOn200HTTPResponseWithJSONItems() {
+        let (sut, client) = makeSUT()
+        let uuid = UUID()
+
+        let item = [
+            "id": uuid.uuidString,
+            "name": "food",
+            "image": "ic_food"
+        ]
+
+        let jsonObject: [String: Any] = [
+            "items": [item]
+        ]
+        
+        let itemsJSON = try! JSONSerialization.data(withJSONObject: jsonObject)
+        let expectedItem = [
+            CategoryItem(id: uuid, name: "food", image: "ic_food")
+        ]
+        expect(sut, expectedValue: expectedItem) {
+            client.onComplete(statusCode: 200, data: itemsJSON)
+        }
+    }
 
     //MARK: - Helpers:
     

@@ -24,12 +24,16 @@ public final class RemoteCategoryLoader {
     public func load() -> AnyPublisher<[CategoryItem], Error> {
         return client.get(from: url)
             .tryMap { data, response in
-                guard response.statusCode == 200, let _ = try? JSONSerialization.jsonObject(with: data) else {
+                guard response.statusCode == 200, let root = try? JSONDecoder().decode(Root.self, from: data) else {
                     throw Error.invalidData
                 }
-                return []
+                return root.items
             }
             .mapError { $0 as? Error ?? Error.connectivity}
             .eraseToAnyPublisher()
     }
+}
+
+private struct Root: Decodable {
+    let items: [CategoryItem]
 }
