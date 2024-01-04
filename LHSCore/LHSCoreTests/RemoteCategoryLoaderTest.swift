@@ -85,26 +85,30 @@ final class RemoteCategoryLoaderTest: XCTestCase {
     }
     
     private class HTTPClientSpy: HTTPClient {
-        var requestedURLs: [URL] = []
-        let state = PassthroughSubject<HTTPURLResponse, Error>()
+        private var categoryMessages = [(url: URL, publisher: PassthroughSubject<HTTPURLResponse, Error>)]()
         
-        func get(from url: URL) -> AnyPublisher<HTTPURLResponse, Error> {
-            requestedURLs .append(url)
-            return state.eraseToAnyPublisher()
+        var requestedURLs: [URL] {
+            categoryMessages.map { $0.url }
         }
         
-        func onCompleteFailure(with error: Error = NSError(domain: "e", code: -1)) {
-            state.send(completion: .failure(error))
+        func get(from url: URL) -> AnyPublisher<HTTPURLResponse, Error> {
+            let publisher = PassthroughSubject<HTTPURLResponse, Error>()
+            categoryMessages.append((url, publisher))
+            return publisher.eraseToAnyPublisher()
+        }
+        
+        func onCompleteFailure(with error: Error = NSError(domain: "e", code: -1), at index: Int = 0) {
+            categoryMessages[index].publisher.send(completion: .failure(error))
         }
         
         func onComplete(statusCode: Int, index: Int = 0) {
             let response = HTTPURLResponse(
-                url: requestedURLs[index],
+                url: categoryMessages[index].url,
                 statusCode: statusCode,
                 httpVersion: nil,
                 headerFields: nil
             )!
-            state.send(response)
+            categoryMessages[index].publisher.send(response)
         }
     }
 }
