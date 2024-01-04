@@ -4,7 +4,7 @@ import Foundation
 import Combine
 
 public protocol HTTPClient {
-    func get(from url: URL) -> AnyPublisher<HTTPURLResponse, Error>
+    func get(from url: URL) -> AnyPublisher<(Data, HTTPURLResponse), Error>
 }
 
 public final class RemoteCategoryLoader {
@@ -23,8 +23,8 @@ public final class RemoteCategoryLoader {
     
     public func load() -> AnyPublisher<Void, Error> {
         return client.get(from: url)
-            .tryMap { response in
-                guard response.statusCode == 200 else {
+            .tryMap { data, response in
+                guard response.statusCode == 200, !data.isEmpty else {
                     throw Error.invalidData
                 }
             }

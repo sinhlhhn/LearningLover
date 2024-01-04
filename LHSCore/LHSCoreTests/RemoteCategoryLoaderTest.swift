@@ -48,6 +48,14 @@ final class RemoteCategoryLoaderTest: XCTestCase {
             }
         }
     }
+    
+    func test_load_deliversErrorOn200HTTPResponseWithInvalidJSON() {
+        let (sut, client) = makeSUT()
+        let invalidJSON = Data()
+        expect(sut, expectedCompletion: .failure(.invalidData)) {
+            client.onComplete(statusCode: 200, data: invalidJSON)
+        }
+    }
 
     //MARK: - Helpers:
     
@@ -85,14 +93,14 @@ final class RemoteCategoryLoaderTest: XCTestCase {
     }
     
     private class HTTPClientSpy: HTTPClient {
-        private var categoryMessages = [(url: URL, publisher: PassthroughSubject<HTTPURLResponse, Error>)]()
+        private var categoryMessages = [(url: URL, publisher: PassthroughSubject<(Data, HTTPURLResponse), Error>)]()
         
         var requestedURLs: [URL] {
             categoryMessages.map { $0.url }
         }
         
-        func get(from url: URL) -> AnyPublisher<HTTPURLResponse, Error> {
-            let publisher = PassthroughSubject<HTTPURLResponse, Error>()
+        func get(from url: URL) -> AnyPublisher<(Data, HTTPURLResponse), Error> {
+            let publisher = PassthroughSubject<(Data, HTTPURLResponse), Error>()
             categoryMessages.append((url, publisher))
             return publisher.eraseToAnyPublisher()
         }
@@ -101,14 +109,14 @@ final class RemoteCategoryLoaderTest: XCTestCase {
             categoryMessages[index].publisher.send(completion: .failure(error))
         }
         
-        func onComplete(statusCode: Int, index: Int = 0) {
+        func onComplete(statusCode: Int, data: Data = Data(), index: Int = 0) {
             let response = HTTPURLResponse(
                 url: categoryMessages[index].url,
                 statusCode: statusCode,
                 httpVersion: nil,
                 headerFields: nil
             )!
-            categoryMessages[index].publisher.send(response)
+            categoryMessages[index].publisher.send((data, response))
         }
     }
 }
