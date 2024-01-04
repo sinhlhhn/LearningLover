@@ -56,6 +56,14 @@ final class RemoteCategoryLoaderTest: XCTestCase {
             client.onComplete(statusCode: 200, data: invalidJSON)
         }
     }
+    
+    func test_load_deliversEmptyValueOn200HTTPResponseWithEmptyJSON() {
+        let (sut, client) = makeSUT()
+        let emptyJSON = Data("{\"items\": []}".utf8)
+        expect(sut, expectedValue: []) {
+            client.onComplete(statusCode: 200, data: emptyJSON)
+        }
+    }
 
     //MARK: - Helpers:
     
@@ -90,6 +98,29 @@ final class RemoteCategoryLoaderTest: XCTestCase {
         wait(for: [expectation], timeout: 1)
         
         XCTAssertEqual(completion, expectedCompletion, file: file, line: line)
+    }
+    
+    private func expect(_ sut: RemoteCategoryLoader, expectedValue: [CategoryItem], when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        var cancellables = [AnyCancellable]()
+        
+        var receivedValue: [CategoryItem] = []
+        
+        let expectation = expectation(description: "wait for loading")
+        sut.load()
+            .sink { completion in
+                XCTFail("Expect receive value, got \(completion) instead", file: file, line: line)
+                expectation.fulfill()
+            } receiveValue: { value in
+                receivedValue = value
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+
+        action()
+        
+        wait(for: [expectation], timeout: 1)
+        
+        XCTAssertEqual(receivedValue, expectedValue, file: file, line: line)
     }
     
     private class HTTPClientSpy: HTTPClient {

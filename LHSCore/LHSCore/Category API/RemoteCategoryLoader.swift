@@ -24,7 +24,7 @@ public final class RemoteCategoryLoader {
     public func load() -> AnyPublisher<[CategoryItem], Error> {
         return client.get(from: url)
             .tryMap { data, response in
-                guard response.statusCode == 200, !data.isEmpty else {
+                guard response.statusCode == 200, let _ = try? JSONSerialization.jsonObject(with: data) else {
                     throw Error.invalidData
                 }
                 return []
