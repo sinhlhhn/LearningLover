@@ -42,9 +42,9 @@ final class RemoteCategoryLoaderTest: XCTestCase {
     func test_load_deliverErrorOnNon200HTTPResponse() {
         let (sut, client) = makeSUT()
         
-        [100, 199, 201, 300].forEach { statusCode in
+        [100, 199, 201, 300].enumerated().forEach { index, statusCode in
             expect(sut, expectedCompletion: .failure(.invalidData)) {
-                client.onComplete(statusCode: statusCode)
+                client.onComplete(statusCode: statusCode, index: index)
             }
         }
     }
