@@ -13,5 +13,3 @@ public struct CategoryItem: Equatable {
         self.image = image
     }
 }
-
-extension CategoryItem: Decodable {}

@@ -27,13 +27,9 @@ public final class RemoteCategoryLoader {
                 guard response.statusCode == 200, let root = try? JSONDecoder().decode(Root.self, from: data) else {
                     throw Error.invalidData
                 }
-                return root.items
+                return root.categories
             }
             .mapError { $0 as? Error ?? Error.connectivity}
             .eraseToAnyPublisher()
     }
-}
-
-private struct Root: Decodable {
-    let items: [CategoryItem]
 }
