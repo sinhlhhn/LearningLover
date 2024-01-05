@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5377DACD2B479B4D00E7CB5D /* RemoteCategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5377DACC2B479B4D00E7CB5D /* RemoteCategoryItem.swift */; };
+		5377DACF2B47AA4100E7CB5D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5377DACE2B47AA4100E7CB5D /* HTTPClient.swift */; };
 		53CE6ED72B43EB030037C78F /* LHSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53CE6ECE2B43EB030037C78F /* LHSCore.framework */; };
 		53CE6EDD2B43EB030037C78F /* LHSCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 53CE6ED12B43EB030037C78F /* LHSCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		53CE6EE72B450E560037C78F /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CE6EE62B450E560037C78F /* CategoryItem.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		5377DACC2B479B4D00E7CB5D /* RemoteCategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCategoryItem.swift; sourceTree = "<group>"; };
+		5377DACE2B47AA4100E7CB5D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		53CE6ECE2B43EB030037C78F /* LHSCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LHSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53CE6ED12B43EB030037C78F /* LHSCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LHSCore.h; sourceTree = "<group>"; };
 		53CE6ED62B43EB030037C78F /* LHSCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LHSCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,7 @@
 			children = (
 				5377DACB2B4798EB00E7CB5D /* API Model */,
 				53CE6EF12B4536710037C78F /* RemoteCategoryLoader.swift */,
+				5377DACE2B47AA4100E7CB5D /* HTTPClient.swift */,
 			);
 			path = "Category API";
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5377DACD2B479B4D00E7CB5D /* RemoteCategoryItem.swift in Sources */,
+				5377DACF2B47AA4100E7CB5D /* HTTPClient.swift in Sources */,
 				53CE6EF22B4536710037C78F /* RemoteCategoryLoader.swift in Sources */,
 				53CE6EE92B450F040037C78F /* CategoryLoader.swift in Sources */,
 				53CE6EE72B450E560037C78F /* CategoryItem.swift in Sources */,

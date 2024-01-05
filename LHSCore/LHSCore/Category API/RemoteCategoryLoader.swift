@@ -3,10 +3,6 @@
 import Foundation
 import Combine
 
-public protocol HTTPClient {
-    func get(from url: URL) -> AnyPublisher<(Data, HTTPURLResponse), Error>
-}
-
 public final class RemoteCategoryLoader {
     private let url: URL
     private let client: HTTPClient
