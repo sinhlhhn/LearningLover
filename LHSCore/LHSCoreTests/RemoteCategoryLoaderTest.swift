@@ -67,22 +67,22 @@ final class RemoteCategoryLoaderTest: XCTestCase {
     
     func test_load_deliversItemsOn200HTTPResponseWithJSONItems() {
         let (sut, client) = makeSUT()
-        let uuid = UUID()
+        
+        let category = CategoryItem(id: UUID(), name: "food", image: "ic_food")
+        let category1 = CategoryItem(id: UUID(), name: "restaurant", image: "ic_restaurant")
+        let category2 = CategoryItem(id: UUID(), name: "bill", image: "ic_bill")
 
-        let item = [
-            "id": uuid.uuidString,
-            "name": "food",
-            "image": "ic_food"
-        ]
+        let items = createJSONItem(with: category)
+        let items1 = createJSONItem(with: category1)
+        let items2 = createJSONItem(with: category2)
 
         let jsonObject: [String: Any] = [
-            "items": [item]
+            "items": [items, items1, items2]
         ]
         
         let itemsJSON = try! JSONSerialization.data(withJSONObject: jsonObject)
-        let expectedItem = [
-            CategoryItem(id: uuid, name: "food", image: "ic_food")
-        ]
+        let expectedItem = [category, category1, category2]
+        
         expect(sut, expectedValue: expectedItem) {
             client.onComplete(statusCode: 200, data: itemsJSON)
         }
@@ -98,6 +98,14 @@ final class RemoteCategoryLoaderTest: XCTestCase {
         let sut = RemoteCategoryLoader(url: url, client: client)
         
         return (sut, client)
+    }
+    
+    private func createJSONItem(with category: CategoryItem) -> [String: Any] {
+        return [
+            "id": category.id.uuidString,
+            "name": category.name,
+            "image": category.image
+        ]
     }
     
     private func expect(_ sut: RemoteCategoryLoader, expectedCompletion: Subscribers.Completion<RemoteCategoryLoader.Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
