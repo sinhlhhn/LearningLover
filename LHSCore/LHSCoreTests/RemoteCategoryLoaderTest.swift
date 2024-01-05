@@ -88,13 +88,20 @@ final class RemoteCategoryLoaderTest: XCTestCase {
     //MARK: - Helpers:
     
     private func makeSUT(
-        url: URL = URL(string: "http://a-default-url")!)
+        url: URL = URL(string: "http://a-default-url")!, file: StaticString = #filePath, line: UInt = #line)
     -> (RemoteCategoryLoader, HTTPClientSpy) {
         
         let client = HTTPClientSpy()
         let sut = RemoteCategoryLoader(url: url, client: client)
+       trackForMemoryLeaks(sut, file: file, line: line)
         
         return (sut, client)
+    }
+    
+    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak.", file: file, line: line)
+        }
     }
     
     private func createJSONItem(with category: CategoryItem) -> [String: Any] {

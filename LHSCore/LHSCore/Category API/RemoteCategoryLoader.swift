@@ -19,13 +19,15 @@ public final class RemoteCategoryLoader {
     
     public func load() -> AnyPublisher<[CategoryItem], Error> {
         return client.get(from: url)
-            .tryMap { data, response in
-                guard response.statusCode == 200, let root = try? JSONDecoder().decode(Root.self, from: data) else {
-                    throw Error.invalidData
-                }
-                return root.categories
-            }
+            .tryMap(toCategoryItem)
             .mapError { $0 as? Error ?? Error.connectivity}
             .eraseToAnyPublisher()
+    }
+    
+    private func toCategoryItem(data: Data, response: HTTPURLResponse) throws -> [CategoryItem] {
+        guard response.statusCode == 200, let root = try? JSONDecoder().decode(Root.self, from: data) else {
+            throw Error.invalidData
+        }
+        return root.categories
     }
 }
