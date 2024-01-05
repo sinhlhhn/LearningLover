@@ -12,7 +12,7 @@ struct Root: Decodable {
     }
 }
 
-struct RemoteCategoryItem: Equatable, Decodable {
+struct RemoteCategoryItem: Decodable {
     let id: UUID
     let name: String
     let image: String

@@ -44,7 +44,8 @@ final class RemoteCategoryLoaderTest: XCTestCase {
         
         [100, 199, 201, 300].enumerated().forEach { index, statusCode in
             expect(sut, expectedCompletion: .failure(.invalidData)) {
-                client.onComplete(statusCode: statusCode, index: index)
+                let validJSONData = makeJSONObject(items: [])
+                client.onComplete(statusCode: statusCode, data: validJSONData, index: index)
             }
         }
     }
@@ -76,11 +77,7 @@ final class RemoteCategoryLoaderTest: XCTestCase {
         let items1 = createJSONItem(with: category1)
         let items2 = createJSONItem(with: category2)
 
-        let jsonObject: [String: Any] = [
-            "items": [items, items1, items2]
-        ]
-        
-        let itemsJSON = try! JSONSerialization.data(withJSONObject: jsonObject)
+        let itemsJSON  = makeJSONObject(items: [items, items1, items2])
         let expectedItem = [category, category1, category2]
         
         expect(sut, expectedValue: expectedItem) {
@@ -107,6 +104,11 @@ final class RemoteCategoryLoaderTest: XCTestCase {
             "image": category.image
         ]
     }
+        
+        private func makeJSONObject(items: [[String: Any]]) -> Data {
+            let json = ["items": items]
+            return try! JSONSerialization.data(withJSONObject: json)
+        }
     
     private func expect(_ sut: RemoteCategoryLoader, expectedCompletion: Subscribers.Completion<RemoteCategoryLoader.Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         var cancellables = [AnyCancellable]()
@@ -171,7 +173,7 @@ final class RemoteCategoryLoaderTest: XCTestCase {
             categoryMessages[index].publisher.send(completion: .failure(error))
         }
         
-        func onComplete(statusCode: Int, data: Data = Data(), index: Int = 0) {
+        func onComplete(statusCode: Int, data: Data, index: Int = 0) {
             let response = HTTPURLResponse(
                 url: categoryMessages[index].url,
                 statusCode: statusCode,
